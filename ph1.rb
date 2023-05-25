@@ -25,20 +25,33 @@ end
 def subsum(arr) #O(n^2) because nested loop is dominant
     arr2 = []
     (0...arr.length).each do |i|
-        (0...arr.length).each do |j|
-            if j<i
-                arr2<<[arr[i],arr[j]]
-            end
+        (i...arr.length).each do |j|
+            
+                arr2<<[arr[i]..arr[j]]
+            
         end
     end
     
-    arr2.map { |subarr| subarr[0] + subarr[1]}.max
+    arr2.map { |subarr| subarr.sum}.max
 end
 
 #PHASE II
 
 def subsum2(arr)
-    largest_sum = xxxx
-    
-end
+    current_max=0
+    large_max=0
+    arr.each_with_index do |ele|
+        current_max+=ele
+        if current_max > 0 && current_max > large_max
+            debugger
+            large_max= current_max
+        elsif current_max < 0
+            current_max = 0
+        end
 
+  end
+large_max
+
+end
+# arr=[2,3,-6,7,-6,2]
+# subsum2(arr)
