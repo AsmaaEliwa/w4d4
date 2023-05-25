@@ -100,5 +100,44 @@ def anagram4(str1,str2)
 
 end
 
-p anagram4("tarragon","arrogant")
-p anagram4("tarragon","arroganx")
+# p anagram4("tarragon","arrogant")
+# p anagram4("tarragon","arroganx")
+
+
+#TWO SUMS
+def bad_two_sum?(arr,target_sum)
+    (0...arr.length).each do |i|
+        (arr[0...i] + arr[i+1..-1]).each do |j|
+            return true if i + j == target_sum
+        end
+    end
+    false
+end
+
+#O(n^2) because nested loop
+
+# p bad_two_sum?([3,2,4,1],6)
+
+def okay_two_sum?(arr,target_sum) # O(n log n)
+    arr.sort!
+    arr.each do |e|
+        unless (arr[0...arr.index(e)] + arr[arr.index(e)+1..-1]).bsearch{|element| target_sum - e == element}.nil?
+        return e,(arr[0...arr.index(e)] + arr[arr.index(e)+1..-1]).bsearch{|element| target_sum - e == element}
+    end
+    end
+end
+
+# p okay_two_sum?([3,2,4,1],6)
+
+def two_sum?(arr,target_sum)
+    h = Hash.new
+    arr.each_with_index do |e,i|
+        h[e] = i
+    end
+end
+ 
+
+
+
+
+
