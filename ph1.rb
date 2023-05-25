@@ -83,4 +83,22 @@ def anagram2(str1,str2)
     str2.empty?
 end
 
-p anagram2("tarragon","arrogant")
+def anagram3(str1,str2)
+    str1.split("").sort.join("") == str2.split("").sort.join("")
+end
+
+# p anagram3("tarragon","arrogant")
+# p anagram3("tarragon","arroganx")
+
+def anagram4(str1,str2)
+    hash1=Hash.new(0)
+    hash2=Hash.new(0)
+
+    str1.split("").map {|c| hash1[c]+=1}
+    str2.split("").map {|c| hash2[c]+=1}
+    hash1==hash2
+
+end
+
+p anagram4("tarragon","arrogant")
+p anagram4("tarragon","arroganx")
