@@ -55,3 +55,32 @@ large_max
 end
 # arr=[2,3,-6,7,-6,2]
 # subsum2(arr)
+
+def anagram1(str,str2)
+    arr = []
+    until arr.length == (1..str.length).inject {|acc,el| acc * el}
+        # debugger
+        dic = str.split("")
+        # debugger
+        new_str=""
+        until dic.empty?
+            new_str+=dic.sample
+            dic.delete(new_str[-1])
+        end
+        arr << new_str unless arr.include?(new_str)
+    end
+    arr.include?(str2)
+end
+
+# p anagram1("postuae","uaposte")
+
+def anagram2(str1,str2)
+    str1.each_char do |c|
+        return false unless str2.include?(c)
+        i = str2.index(c)
+        str2[i] = ""
+    end
+    str2.empty?
+end
+
+p anagram2("tarragon","arrogant")
